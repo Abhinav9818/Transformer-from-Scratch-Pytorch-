@@ -2,9 +2,9 @@
 
 A complete, from-scratch PyTorch implementation of the Transformer architecture introduced in *"Attention Is All You Need"* (Vaswani et al., 2017), applied to English-to-German neural machine translation. Every core component — embeddings, positional encoding, multi-head self-attention, cross-attention, feed-forward sublayers, and the encoder–decoder stack — is implemented manually, without relying on `nn.Transformer` or `nn.MultiheadAttention`, to demonstrate a complete understanding of the underlying mechanics.
 
-<a href="https://colab.research.google.com/github/Abhinav9818/Transformer-from-Scratch-Pytorch-/blob/main/Transformer_Encoder_Decoder.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
-## ✨ Key Features
+
+ Key Features
 
 - End-to-end NLP pipeline: tokenization, vocabulary construction, numericalization, batching, and masking
 - Linguistically-aware tokenization using **spaCy** (`en_core_web_sm` for English, `de_core_news_sm` for German)
@@ -21,11 +21,11 @@ A complete, from-scratch PyTorch implementation of the Transformer architecture 
 - Training/validation loss and accuracy visualization
 - **Greedy-decoding inference pipeline** for translating arbitrary input sentences
 
-## 🗂️ Dataset
+ Dataset
 
 [**Multi30k**](https://huggingface.co/datasets/bentrevett/multi30k) — a parallel English–German sentence corpus of image captions, widely used as a standard benchmark for machine translation research. Loaded via the Hugging Face `datasets` library with predefined train, validation, and test splits.
 
-## 🏗️ Model Architecture
+ Model Architecture
 
 Implements the standard encoder–decoder Transformer configuration:
 
@@ -41,7 +41,7 @@ Implements the standard encoder–decoder Transformer configuration:
 | Loss function      | Cross-entropy (padding tokens ignored)  |
 | Training epochs    | 20                                       |
 
-## 📦 Requirements
+ Requirements
 
 ```bash
 pip install torch datasets sentencepiece spacy matplotlib
@@ -51,7 +51,7 @@ python -m spacy download de_core_news_sm
 
 A CUDA-enabled GPU is recommended for efficient training (the reference run was performed on an NVIDIA Tesla T4).
 
-## 🚀 Usage
+ Usage
 
 1. Open `Transformer_Encoder_Decoder.ipynb` in Jupyter or Google Colab (badge above).
 2. Run all cells sequentially. The notebook will:
@@ -74,7 +74,7 @@ input  : A man is playing football
 output : ein mann spielt football .
 ```
 
-## 📊 Training Results (20 Epochs)
+ Training Results (20 Epochs)
 
 | Metric               | Value                        |
 |-----------------------|-------------------------------|
@@ -84,7 +84,7 @@ output : ein mann spielt football .
 
 Training loss decreases steadily throughout training, while validation loss reaches its minimum around epoch 4 before gradually increasing — a well-known pattern in sequence-to-sequence training that indicates the point beyond which the model begins to specialize to the training distribution. Regularization techniques such as dropout, label smoothing, and learning-rate scheduling (as described in the original Transformer paper) can further improve generalization and are natural next steps for extending this project.
 
-## 📁 Notebook Structure
+ Notebook Structure
 
 1. **Data Preparation** — dependency installation, dataset loading, tokenization, vocabulary construction, and sentence numericalization
 2. **Dataset & DataLoader** — custom `TranslationDataset`, padding-aware `collate_fn`, and mask-generation utilities
@@ -92,7 +92,7 @@ Training loss decreases steadily throughout training, while validation loss reac
 4. **Training & Evaluation** — full training loop with per-epoch loss and accuracy tracking, along with visualization of training dynamics
 5. **Inference** — a greedy-decoding `translate()` function for generating translations from raw input text
 
-## 🔮 Future Enhancements
+ Future Enhancements
 
 - Incorporate dropout, label smoothing, and weight decay for improved regularization
 - Replace greedy decoding with beam search for higher-quality translations
@@ -100,6 +100,6 @@ Training loss decreases steadily throughout training, while validation loss reac
 - Evaluate translation quality using BLEU score in addition to token-level accuracy
 - Adopt subword tokenization (e.g., BPE or SentencePiece) for improved vocabulary coverage and handling of rare words
 
-## 📜 License
+ License
 
 No license has been specified for this project. Add a license file if you intend to share or reuse this code.
